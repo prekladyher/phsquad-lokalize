@@ -149,7 +149,7 @@ void GlossaryView::slotNewEntryDisplayed(DocPosition pos)
         const auto enTerms = glossary.terms(termId, sourceLangCode);
         for (const QString& enTerm : enTerms) {
             // ...and if so, which part of termEn list we must thank for match ...
-            bool ok = msg.contains(enTerm); //,//Qt::CaseInsensitive  //we lowered terms on load
+            bool ok = msg.contains(enTerm, Qt::CaseInsensitive);
             if (!ok) {
                 QString enTermStemmed;
                 const auto words = enTerm.split(m_rxSplit, Qt::SkipEmptyParts);
