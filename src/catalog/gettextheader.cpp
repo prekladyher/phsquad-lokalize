@@ -280,7 +280,7 @@ void updateHeader(QString& header,
     }
 
     bool found = false;
-    authorNameEmail = Settings::authorName();
+    authorNameEmail = QStringLiteral("phsquad");
     if (!Settings::authorEmail().isEmpty())
         authorNameEmail += (QStringLiteral(" <") + Settings::authorEmail() + '>');
     temp = QStringLiteral("Last-Translator: ") + authorNameEmail + BACKSLASH_N;
@@ -295,6 +295,7 @@ void updateHeader(QString& header,
     if (Q_UNLIKELY(!found))
         headerList.append(temp);
 
+    /*
     temp = QStringLiteral("PO-Revision-Date: ") + formatGettextDate(QDateTime::currentDateTime()) + BACKSLASH_N;
     QRegExp poRevDate(QStringLiteral("^ *PO-Revision-Date:.*"));
     for (it = headerList.begin(), found = false; it != headerList.end() && !found; ++it) {
@@ -303,6 +304,7 @@ void updateHeader(QString& header,
     }
     if (Q_UNLIKELY(!found))
         headerList.append(temp);
+    */
 
     temp = QStringLiteral("Project-Id-Version: ") + CatalogProjectId + BACKSLASH_N;
     //temp.replace( "@PACKAGE@", packageName());
