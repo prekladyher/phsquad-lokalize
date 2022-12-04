@@ -281,8 +281,8 @@ void updateHeader(QString& header,
 
     bool found = false;
     authorNameEmail = QStringLiteral("phsquad");
-    if (!Settings::authorEmail().isEmpty())
-        authorNameEmail += (QStringLiteral(" <") + Settings::authorEmail() + '>');
+    // if (!Settings::authorEmail().isEmpty())
+    //    authorNameEmail += (QStringLiteral(" <") + Settings::authorEmail() + '>');
     temp = QStringLiteral("Last-Translator: ") + authorNameEmail + BACKSLASH_N;
 
     QRegExp lt(QStringLiteral("^ *Last-Translator:.*"));
