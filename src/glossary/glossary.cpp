@@ -157,6 +157,7 @@ void GlossarySortFilterProxyModel::setFilterRegExp(const QString& s)
         return;
 
     //static const QRegExp lettersOnly("^[a-z]");
+    QSortFilterProxyModel::setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
     QSortFilterProxyModel::setFilterRegExp(s);
 
     fetchMore(QModelIndex());
@@ -561,7 +562,7 @@ void Glossary::hashTermEntry(const QDomElement& termEntry)
     for (const QString& termText : termTexts) {
         const auto words = termText.split(' ', Qt::SkipEmptyParts);
         for (const QString& word : words)
-            idsByLangWord[sourceLangCode].insert(stem(sourceLangCode, word), entryId);
+            idsByLangWord[sourceLangCode].insert(stem(sourceLangCode, word.toLower()), entryId);
     }
 }
 
@@ -575,7 +576,7 @@ void Glossary::unhashTermEntry(const QDomElement& termEntry)
     for (const QString& termText : termTexts) {
         const auto words = termText.split(' ', Qt::SkipEmptyParts);
         for (const QString& word : words)
-            idsByLangWord[sourceLangCode].remove(stem(sourceLangCode, word), entryId);
+            idsByLangWord[sourceLangCode].remove(stem(sourceLangCode, word.toLower()), entryId);
     }
 }
 
